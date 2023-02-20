@@ -1,29 +1,33 @@
 import React, { useState, useEffect } from 'react';
 
 function App() {
-  const [data, setData] = useState(null);
+  const [users, setUsers] = useState([])
+
+  const fetchData = () => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then(response => {
+        return response.json()
+      })
+      .then(data => {
+        setUsers(data)
+      })
+  }
 
   useEffect(() => {
-    fetch('https://api.chucknorris.io/jokes/random')
-      .then(response => response.json())
-      .then(data => setData(data))
-      .catch(error => console.error(error));
-      
-  }, []);
-console.log(data)
+    fetchData()
+  }, [])
+
   return (
     <div>
-      {data ? (
+      {users.length > 0 && (
         <ul>
-          {data.map(item => (
-            <li key={item.id}>{item.name}</li>
+          {users.map(user => (
+            <li key={user.id}>{user.name}</li>
           ))}
         </ul>
-      ) : (
-        <p>Loading data...</p>
       )}
     </div>
-  );
+  )
 }
 
 export default App;
