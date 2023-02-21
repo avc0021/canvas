@@ -1,10 +1,10 @@
 import React from 'react';
-import ChuckNorrisJokes from './components/ChuckNorrisJokes';
+import CanvasCard from './components/CanvasCard';
 
 function App() {
   return (
     <div>
-      <ChuckNorrisJokes />
+      <CanvasCard />
     </div>
   );
 }
