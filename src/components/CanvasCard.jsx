@@ -4,13 +4,13 @@ function CanvasCard() {
   const [canvas, setCanvas] = useState("");
 
   useEffect(() => {
-  fetch('https://canvas.instructure.com/api/v1/courses', {
-    method: 'GET',
-    mode: 'cors',
+  fetch('https://uiw.test.instructure.com/api/v1/users/self', {
+    // method: 'GET',
+    // mode: 'cors',
     headers: {
-      Authorization: '13946~HgIECpPhd6zOjhdFna18iEXooHwv9Ae78QNkDPTmCWHcQiUgIXwArN0qkNVG2z4y',
-      'Access-Control-Allow-Origin': '*',
-    },
+      "Authorization": "Bearer 13946~HgIECpPhd6zOjhdFna18iEXooHwv9Ae78QNkDPTmCWHcQiUgIXwArN0qkNVG2z4y"
+      // 'Access-Control-Allow-Origin': '*',
+    }
   })
     .then(response => response.json())
     .then(data => {
